@@ -9,3 +9,4 @@ This is under construction. For now user can:
 3. Decrease it's mass with Megatrone with or without prop module
 4. Watch jumps history
 
+*the tool is still under construction, a lot of work need to be done*
