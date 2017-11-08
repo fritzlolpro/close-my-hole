@@ -4,6 +4,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   A239: {
@@ -11,6 +12,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   A641: {
@@ -18,6 +20,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 1000000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   A982: {
@@ -25,6 +28,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   B041: {
@@ -32,6 +36,7 @@ const whTypes = {
     maxMass: 5000000000,
     maxSingleMass: 300000000,
     maxHours: 48,
+    shipToClose:'',
     regeneration: 500000000
   },
   B274: {
@@ -39,6 +44,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   B449: {
@@ -46,6 +52,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 1000000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   B520: {
@@ -53,6 +60,7 @@ const whTypes = {
     maxMass: 5000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 500000000
   },
   B735: {
@@ -60,6 +68,7 @@ const whTypes = {
     maxMass: 750000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   C008: {
@@ -67,6 +76,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 5000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 500000000
   },
   C125: {
@@ -74,6 +84,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   C140: {
@@ -81,6 +92,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   C247: {
@@ -88,6 +100,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   C248: {
@@ -95,6 +108,7 @@ const whTypes = {
     maxMass: 5000000000,
     maxSingleMass: 1800000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 500000000
   },
   C391: {
@@ -102,6 +116,7 @@ const whTypes = {
     maxMass: 5000000000,
     maxSingleMass: 1800000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 500000000
   },
   C414: {
@@ -109,6 +124,7 @@ const whTypes = {
     maxMass: 750000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   D364: {
@@ -116,6 +132,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   D382: {
@@ -123,6 +140,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   D792: {
@@ -130,6 +148,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1000000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   D845: {
@@ -137,6 +156,7 @@ const whTypes = {
     maxMass: 5000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 500000000
   },
   E004: {
@@ -144,6 +164,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 5000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 500000000
   },
   E175: {
@@ -151,6 +172,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   E545: {
@@ -158,6 +180,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   E587: {
@@ -165,6 +188,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1000000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   F135: {
@@ -172,6 +196,7 @@ const whTypes = {
     maxMass: 750000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   F355: {
@@ -179,6 +204,7 @@ const whTypes = {
     maxMass: 100000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   G008: {
@@ -186,6 +212,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 5000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 500000000
   },
   G024: {
@@ -193,6 +220,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   H121: {
@@ -200,6 +228,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   H296: {
@@ -207,6 +236,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   H900: {
@@ -214,6 +244,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:['Megathron'],
     regeneration: 0
   },
   I182: {
@@ -221,6 +252,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   J244: {
@@ -228,6 +260,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   K329: {
@@ -235,6 +268,7 @@ const whTypes = {
     maxMass: 5000000000,
     maxSingleMass: 1800000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 500000000
   },
   K346: {
@@ -242,6 +276,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   L005: {
@@ -249,6 +284,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 5000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 500000000
   },
   L031: {
@@ -256,6 +292,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1000000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   L477: {
@@ -263,6 +300,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   L614: {
@@ -270,6 +308,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   M001: {
@@ -277,6 +316,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 5000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 500000000
   },
   M164: {
@@ -284,6 +324,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   M267: {
@@ -291,6 +332,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   M555: {
@@ -298,6 +340,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1000000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   M609: {
@@ -305,6 +348,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   N062: {
@@ -312,6 +356,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   N110: {
@@ -319,6 +364,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   N290: {
@@ -326,6 +372,7 @@ const whTypes = {
     maxMass: 5000000000,
     maxSingleMass: 1800000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 500000000
   },
   N432: {
@@ -333,6 +380,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   N766: {
@@ -340,6 +388,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   N770: {
@@ -347,6 +396,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   N944: {
@@ -354,6 +404,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   N968: {
@@ -361,6 +412,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   O128: {
@@ -368,6 +420,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 100000000
   },
   O477: {
@@ -375,6 +428,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   O883: {
@@ -382,6 +436,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   P060: {
@@ -389,6 +444,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   Q003: {
@@ -396,6 +452,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 5000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 500000000
   },
   Q063: {
@@ -403,6 +460,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   Q317: {
@@ -410,6 +468,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   R051: {
@@ -417,6 +476,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1000000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   R259: {
@@ -424,6 +484,7 @@ const whTypes = {
     maxMass: 750000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   R474: {
@@ -431,6 +492,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   R943: {
@@ -438,6 +500,7 @@ const whTypes = {
     maxMass: 750000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   S047: {
@@ -445,6 +508,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   S199: {
@@ -452,6 +516,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   S804: {
@@ -459,6 +524,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   S877: {
@@ -466,6 +532,7 @@ const whTypes = {
     maxMass: 750000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   T405: {
@@ -473,6 +540,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   T458: {
@@ -480,6 +548,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   U210: {
@@ -487,6 +556,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   U319: {
@@ -494,6 +564,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1800000000,
     maxHours: 48,
+    shipToClose:'',
     regeneration: 500000000
   },
   U574: {
@@ -501,6 +572,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   V283: {
@@ -508,6 +580,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1000000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   V301: {
@@ -515,6 +588,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   V753: {
@@ -522,6 +596,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   V898: {
@@ -529,6 +604,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   V911: {
@@ -536,6 +612,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   V928: {
@@ -543,6 +620,7 @@ const whTypes = {
     maxMass: 750000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   W237: {
@@ -550,6 +628,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   X702: {
@@ -557,6 +636,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 300000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   X877: {
@@ -564,6 +644,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:['Megathron'],
     regeneration: 0
   },
   Y683: {
@@ -571,6 +652,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   Y790: {
@@ -578,6 +660,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   Z006: {
@@ -585,6 +668,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 5000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 5000000
   },
   Z060: {
@@ -592,6 +676,7 @@ const whTypes = {
     maxMass: 1000000000,
     maxSingleMass: 20000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   Z142: {
@@ -599,6 +684,7 @@ const whTypes = {
     maxMass: 3000000000,
     maxSingleMass: 1350000000,
     maxHours: 24,
+    shipToClose:'',
     regeneration: 0
   },
   Z457: {
@@ -606,6 +692,7 @@ const whTypes = {
     maxMass: 2000000000,
     maxSingleMass: 300000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   Z647: {
@@ -613,6 +700,7 @@ const whTypes = {
     maxMass: 500000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   },
   Z971: {
@@ -620,6 +708,7 @@ const whTypes = {
     maxMass: 100000000,
     maxSingleMass: 20000000,
     maxHours: 16,
+    shipToClose:'',
     regeneration: 0
   }
 }
