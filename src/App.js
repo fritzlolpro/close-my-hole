@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import types from './types';
 import Dropdown from 'react-dropdown';
+import fits from './fits';
 const whList = Object
   .keys(types)
   .map(function (key) {
@@ -12,6 +13,7 @@ const whTypes = whList.map(item => item[0])
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.onSelect = this
       .onSelect
       .bind(this)
@@ -28,6 +30,7 @@ class App extends Component {
       destanation: '',
       maxHours: 0,
       currentMass: 0,
+      ship: 'emptyShip',
       stepNumber: 1,
       history: []
     }
@@ -40,6 +43,7 @@ class App extends Component {
       destanation: types[option.value].destination,
       maxHours: types[option.value].maxHours,
       currentMass: types[option.value].maxMass,
+      ship: types[option.value].shipToClose,
       history: [],
       stepNumber: 1
     })
@@ -52,6 +56,7 @@ class App extends Component {
       destanation: types[e.target.value].destination,
       maxHours: types[e.target.value].maxHours,
       currentMass: types[e.target.value].maxMass,
+      ship: types[e.target.value].shipToClose,
       history: [],
       stepNumber: 1
     })
@@ -83,6 +88,9 @@ class App extends Component {
       .map((e, k) => <li key={k}>
         <span>{e}</span>
       </li>)
+    const fitting = (this.state.ship === 'emptyShip' || this.state.ship === '')
+      ? [< span key = '0' > </span>]
+      : fits[this.state.ship].map((e, k) => <span key={k}>{e}</span>)
     return (
       <div className="App">
         <div>
@@ -102,16 +110,17 @@ class App extends Component {
         </div>
         <div>
           <h2>Hole info</h2>
-          <Info className='stat-list'>{[
+          <Info>{[
               `Hole destination:${this.state.destanation}`,
               `Lifetime:${this.state.maxHours}`,
               `Maximum hole mass:${ (this.state.maxMass / 1000).toLocaleString()} tonn`,
               `Maximum mass that pass throught hole:${ (this.state.maxSingleMass / 1000).toLocaleString()} tonn`
             ]}</Info>
+          <Info>{fitting}</Info>
         </div>
         <div>
           <h2>Current hole</h2>
-          <Info className='stat-list'>{[`currentMass: ${(this.state.currentMass / 1000).toLocaleString()}
+          <Info>{[`currentMass: ${ (this.state.currentMass / 1000).toLocaleString()}
             tonn`]}</Info>
           <Button value='298800000' lable='prop jump' onClick={this.jumpThroughHole}>Prop Jump</Button>
           <Button value='198800000' lable='no-prop jump' onClick={this.jumpThroughHole}>No-prop Jump</Button>
@@ -122,10 +131,10 @@ class App extends Component {
   }
 }
 const Info = ({
-  className = '',
+  className = 'stat-list',
   children
 }) => {
-  return (children.map(e => <div>{e}</div>))
+  return (children.map((e, k) => <div key={k}>{e}</div>))
 }
 const Button = ({
   className = 'standart-button',
