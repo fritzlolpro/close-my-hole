@@ -1,5 +1,7 @@
 const fits = {
-    Megathron : [
+    Megathron :
+    {
+        fit: [
         '[Megathron, Megathron]',
         'Damage Control II',
         'Warp Core Stabilizer I',
@@ -35,6 +37,12 @@ const fits = {
 
 
     ],
+    mass: {
+        prop: 298800000,
+        noprop: 198800000
+    }
+
+    }
 }
 
 export default fits;
