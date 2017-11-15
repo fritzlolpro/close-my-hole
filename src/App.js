@@ -102,6 +102,11 @@ class App extends Component {
 			stepNumber: history.length + 2
 		});
 	}
+	disruptHole = e => {
+		this.setState({
+			currentMass: this.state.maxMass * e.target.value
+		});
+	};
 
 	render() {
 		const defaultOption = this.state.selected;
@@ -112,12 +117,60 @@ class App extends Component {
 			</li>
 		));
 
+		let countJumpsWithoutProp = 0,
+			countJumpsWithProp = 0;
+
+		const holeCurrentMass = this.state.currentMass;
 		const ship = this.state.ship;
 		const shipMass = {
 			prop: ship === "" ? null : fits[ship].mass.prop,
 			noprop: ship === "" ? null : fits[ship].mass.noprop
 		};
+
+		const calculateJumps = (massWithoutProp, massWithProp) => {
+			countJumpsWithoutProp = Math.ceil(holeCurrentMass / shipMass.noprop);
+			countJumpsWithProp = Math.ceil(holeCurrentMass / shipMass.prop);
+
+			const searchForMin = (a, b) => {
+				let noPropPossibleJumps = [];
+				let propPossibleJumps = [];
+				let minNumOfJumps = Math.ceil(a + b);
+				let numOfJumps = Math.ceil(a + b);
+
+				for (let i = 1; i < a; i++) {
+					noPropPossibleJumps.push(i);
+				}
+				for (let j = 1; j < b; j++) {
+					propPossibleJumps.push(j);
+				}
+				noPropPossibleJumps.forEach(e => {
+					propPossibleJumps.forEach(k => {
+						if (
+							e * shipMass.noprop + k * shipMass.prop >= holeCurrentMass &&
+							e * shipMass.noprop + k * shipMass.prop <
+								holeCurrentMass + shipMass.prop &&
+							(e + k) % 2 === 0
+						) {
+							numOfJumps = Math.ceil(e + k);
+							console.log(e, k);
+							if (minNumOfJumps > numOfJumps) {
+								minNumOfJumps = numOfJumps;
+								console.log(numOfJumps, e, k);
+							} else {
+								searchForMin(e, k);
+							}
+						}
+					});
+				});
+			};
+			// if (minNumOfJumps > numOfJumps){
+			searchForMin(countJumpsWithoutProp, countJumpsWithProp);
+		};
+		if (ship !== "") {
+			calculateJumps(shipMass.noprop, shipMass.prop);
+		}
 		console.log(shipMass);
+
 		const fitting =
 			ship === ""
 				? [<span key="0"> </span>]
@@ -175,7 +228,8 @@ class App extends Component {
 					<Info>{fitting}</Info>
 					<Info>
 						{[
-							`Propulsion mass: ${(shipMass.prop / 1000).toLocaleString()} tonn`,
+							`Propulsion mass: ${(shipMass.prop / 1000
+							).toLocaleString()} tonn`,
 							`Regular mass: ${(shipMass.noprop / 1000).toLocaleString()} tonn`
 						]}
 					</Info>
@@ -187,11 +241,13 @@ class App extends Component {
 				>
 					<Info>
 						{[
-							`currentMass: ${(this.state.currentMass / 1000).toLocaleString()}
-              tonn`
+							`currentMass: ${(this.state.currentMass / 1000
+							).toLocaleString()} tonn`
 						]}
 					</Info>
 
+					<Button value="0.5" lable="Disrupt hole" onClick={this.disruptHole} />
+					<Button value="0.1" lable="Crit hole" onClick={this.disruptHole} />
 					<Button
 						value={shipMass.prop}
 						lable="prop jump"
