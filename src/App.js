@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 import logo from "./logo.svg";
 import "./App.css";
 import types from "./types";
@@ -39,7 +40,8 @@ class App extends Component {
 			ship: "",
 			stepNumber: 1,
 			history: [],
-			favoriteHoles: favoriteHoles
+			favoriteHoles: favoriteHoles,
+
 		};
 	}
 
@@ -95,7 +97,7 @@ class App extends Component {
 		this.setState({
 			currentMass: this.state.currentMass - parseInt(e.target.value),
 			history: history.concat([
-				`#${this.state.stepNumber} ${e.target.getAttribute("lable")} with ${(e
+				`#${this.state.stepNumber} ${e.target.getAttribute("label")} with ${(e
 					.target.value / 1000
 				).toLocaleString()} mass`
 			]),
@@ -137,10 +139,10 @@ class App extends Component {
 				let minNumOfJumps = Math.ceil(a + b);
 				let numOfJumps = Math.ceil(a + b);
 
-				for (let i = 1; i < a; i++) {
+				for (let i = 0; i < a; i++) {
 					noPropPossibleJumps.push(i);
 				}
-				for (let j = 1; j < b; j++) {
+				for (let j = 0; j < b; j++) {
 					propPossibleJumps.push(j);
 				}
 				noPropPossibleJumps.forEach(e => {
@@ -152,12 +154,13 @@ class App extends Component {
 							(e + k) % 2 === 0
 						) {
 							numOfJumps = Math.ceil(e + k);
-							console.log(e, k);
+							// console.log(e, k);
 							if (minNumOfJumps > numOfJumps) {
 								minNumOfJumps = numOfJumps;
-								console.log(numOfJumps, e, k);
-							} else {
-								searchForMin(e, k);
+								console.log(`Jumps: ${numOfJumps}, noprop jumps: ${e}, prop jumps: ${k}`);
+								countJumpsWithoutProp = e
+								countJumpsWithProp = k
+
 							}
 						}
 					});
@@ -193,7 +196,7 @@ class App extends Component {
 					<Favbutton
 						value={this.state.selected}
 						onClick={this.setFavorite}
-						lable="Add current to favorites"
+						label="Add current to favorites"
 						inlist={favoriteHoles.includes(this.state.selected)}
 					/>
 
@@ -242,15 +245,15 @@ class App extends Component {
 					<Info>
 						{[
 							`currentMass: ${(this.state.currentMass / 1000
-							).toLocaleString()} tonn`
+							).toLocaleString()} tonn`,`Perform ${countJumpsWithoutProp} no-prop jumps and ${countJumpsWithProp} prop jumps to close this hole`
 						]}
 					</Info>
 
-					<Button value="0.5" lable="Disrupt hole" onClick={this.disruptHole} />
-					<Button value="0.1" lable="Crit hole" onClick={this.disruptHole} />
+					<Button value="0.5" label="Disrupt hole" onClick={this.disruptHole} />
+					<Button value="0.1" label="Crit hole" onClick={this.disruptHole} />
 					<Button
 						value={shipMass.prop}
-						lable="prop jump"
+						label="prop jump"
 						onClick={this.jumpThroughHole}
 					>
 						Prop Jump
@@ -258,7 +261,7 @@ class App extends Component {
 
 					<Button
 						value={shipMass.noprop}
-						lable="no-prop jump"
+						label="no-prop jump"
 						onClick={this.jumpThroughHole}
 					>
 						No-prop Jump
@@ -278,23 +281,44 @@ const Info = ({ className = "stat-list", children }) => {
 const Button = ({
 	className = "standart-button",
 	value,
-	lable = "",
+	label = "",
 	onClick,
-	children = lable
+	children = label
 }) => {
 	return (
-		<button value={value} lable={lable} onClick={onClick}>
+		<Butt value={value} label={label} onClick={onClick} className={className}>
 			{children}
-		</button>
+		</Butt>
 	);
 };
+const Butt = styled.button`
+	font-weight: 400;
+	background-color: #9EFFFF;
+	border: 1px solid black;
+	border-radius: 2px;
+	font-family: 'Roboto Condensed', sans-serif;
+	width: 8em;
+	height: 3em;
+	&.delete-button {
+		font-weight: 900;
+		font-size: 12px;
+		width: 1.8em;
+		height: 1.8em;
+		color: #35434d;
+		background-color: #FB94FF;
+		border-radius: 50%;
+		&:not(:hover) {
+			opacity: 0;
+		}
+	}
+`
 
 const FavoriteHoles = ({ className = "", favHoles, onClick, onDelete }) => {
 	if (favHoles.length > 0) {
 		const favs = favHoles.map((e, k) => (
 			<div key={k}>
-				<Button value={e} onClick={onClick} lable={e} />
-				<Button value={e} onClick={onDelete} lable="delete" />
+				<Button value={e} onClick={onClick} label={e} />
+				<Button value={e} onClick={onDelete} className={`delete-button ${className}`} label="—" />
 			</div>
 		));
 		return favs;
@@ -307,13 +331,13 @@ const Favbutton = ({
 	className = "",
 	onClick,
 	value,
-	lable = value,
+	label = value,
 	inlist
 }) => {
 	if (value && !inlist) {
 		return (
 			<div className={className}>
-				<Button value={value} onClick={onClick} lable={lable} />
+				<Button value={value} onClick={onClick} label={label} />
 			</div>
 		);
 	} else {
