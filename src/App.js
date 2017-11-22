@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import logo from "./logo.svg";
 import "./App.css";
 import types from "./types";
@@ -12,10 +12,26 @@ const whList = Object.keys(types).map(function(key) {
 
 const whTypes = whList.map(item => item[0]);
 
-const favoriteHoles =
-	[localStorage.getItem("favoriteHoles")][0].length > 1
-		? [localStorage.getItem("favoriteHoles")][0].split(",")
-		: [];
+let favoriteHoles = [];
+
+const lsTest = () => {
+	var test = "test";
+	try {
+		localStorage.setItem(test, test);
+		localStorage.removeItem(test);
+		return true;
+	} catch (e) {
+		return false;
+	}
+};
+
+if (lsTest() && localStorage.getItem("favoriteHoles")) {
+	favoriteHoles = [localStorage.getItem("favoriteHoles")][0].split(",");
+}
+
+// [localStorage.getItem("favoriteHoles")][0].length > 1
+// 	? [localStorage.getItem("favoriteHoles")][0].split(",")
+// 	: [];
 
 //this is for debug
 if (!favoriteHoles.includes("H900") && !favoriteHoles.includes("H900")) {
@@ -40,8 +56,7 @@ class App extends Component {
 			ship: "",
 			stepNumber: 1,
 			history: [],
-			favoriteHoles: favoriteHoles,
-
+			favoriteHoles: favoriteHoles
 		};
 	}
 
@@ -97,8 +112,8 @@ class App extends Component {
 		this.setState({
 			currentMass: this.state.currentMass - parseInt(e.target.value),
 			history: history.concat([
-				`#${this.state.stepNumber} ${e.target.getAttribute("label")} with ${(e
-					.target.value / 1000
+				`#${this.state.stepNumber} ${e.target.getAttribute("label")} with ${(
+					e.target.value / 1000
 				).toLocaleString()} mass`
 			]),
 			stepNumber: history.length + 2
@@ -157,10 +172,11 @@ class App extends Component {
 							// console.log(e, k);
 							if (minNumOfJumps > numOfJumps) {
 								minNumOfJumps = numOfJumps;
-								console.log(`Jumps: ${numOfJumps}, noprop jumps: ${e}, prop jumps: ${k}`);
-								countJumpsWithoutProp = e
-								countJumpsWithProp = k
-
+								console.log(
+									`Jumps: ${numOfJumps}, noprop jumps: ${e}, prop jumps: ${k}`
+								);
+								countJumpsWithoutProp = e;
+								countJumpsWithProp = k;
 							}
 						}
 					});
@@ -181,22 +197,22 @@ class App extends Component {
 
 		return (
 			<div className="App">
-				<Dropdown
-					className="dropdown"
-					options={whTypes}
-					onChange={this.onSelect}
-					value={defaultOption}
-					placeholder="Select an option"
-				/>
-
 				<Displayplate
 					shoulddisplay={favoriteHoles === [] ? false : true}
-					header="Favorite holes"
+					header="Select Wormhole"
+					className="global-plate"
 				>
+					<Dropdown
+						className="dropdown"
+						options={whTypes}
+						onChange={this.onSelect}
+						value={defaultOption}
+						placeholder=""
+					/>
 					<Favbutton
 						value={this.state.selected}
 						onClick={this.setFavorite}
-						label="Add current to favorites"
+						label="+"
 						inlist={favoriteHoles.includes(this.state.selected)}
 					/>
 
@@ -210,15 +226,17 @@ class App extends Component {
 				<Displayplate
 					shoulddisplay={this.state.selected ? true : false}
 					header="Hole info"
+					className="global-plate"
 				>
 					<Info>
 						{[
 							`Hole destination:${this.state.destanation}`,
 							`Lifetime:${this.state.maxHours}`,
-							`Maximum hole mass:${(this.state.maxMass / 1000
+							`Maximum hole mass:${(
+								this.state.maxMass / 1000
 							).toLocaleString()} tonn`,
-							`Maximum mass that pass throught hole:${(this.state
-								.maxSingleMass / 1000
+							`Maximum mass that pass throught hole:${(
+								this.state.maxSingleMass / 1000
 							).toLocaleString()} tonn`
 						]}
 					</Info>
@@ -227,11 +245,13 @@ class App extends Component {
 				<Displayplate
 					shoulddisplay={ship === "" ? false : true}
 					header="Recommended Ship"
+					className="global-plate"
 				>
 					<Info>{fitting}</Info>
 					<Info>
 						{[
-							`Propulsion mass: ${(shipMass.prop / 1000
+							`Propulsion mass: ${(
+								shipMass.prop / 1000
 							).toLocaleString()} tonn`,
 							`Regular mass: ${(shipMass.noprop / 1000).toLocaleString()} tonn`
 						]}
@@ -241,34 +261,40 @@ class App extends Component {
 				<Displayplate
 					shoulddisplay={this.state.selected ? true : false}
 					header="Current hole"
+					className="global-plate"
 				>
 					<Info>
 						{[
-							`currentMass: ${(this.state.currentMass / 1000
-							).toLocaleString()} tonn`,`Perform ${countJumpsWithoutProp} no-prop jumps and ${countJumpsWithProp} prop jumps to close this hole`
+							`currentMass: ${(
+								this.state.currentMass / 1000
+							).toLocaleString()} tonn`,
+							`Perform ${countJumpsWithoutProp} no-prop jumps and ${
+								countJumpsWithProp
+							} prop jumps to close this hole`
 						]}
 					</Info>
 
 					<Button value="0.5" label="Disrupt hole" onClick={this.disruptHole} />
 					<Button value="0.1" label="Crit hole" onClick={this.disruptHole} />
-					<Button
-						value={shipMass.prop}
-						label="prop jump"
-						onClick={this.jumpThroughHole}
-					>
-						Prop Jump
-					</Button>
+					<Displayplate shoulddisplay={shipMass.prop}>
+						<Button
+							value={shipMass.prop}
+							label="prop jump"
+							onClick={this.jumpThroughHole}
+						>
+							Prop Jump
+						</Button>
 
-					<Button
-						value={shipMass.noprop}
-						label="no-prop jump"
-						onClick={this.jumpThroughHole}
-					>
-						No-prop Jump
-					</Button>
+						<Button
+							value={shipMass.noprop}
+							label="no-prop jump"
+							onClick={this.jumpThroughHole}
+						>
+							No-prop Jump
+						</Button>
+					</Displayplate>
+					<Info>{history}</Info>
 				</Displayplate>
-
-				<Info>{history}</Info>
 			</div>
 		);
 	}
@@ -292,33 +318,46 @@ const Button = ({
 	);
 };
 const Butt = styled.button`
-	font-weight: 400;
-	background-color: #9EFFFF;
+	font-weight: 600;
+	background-color: #9effff;
 	border: 1px solid black;
 	border-radius: 2px;
-	font-family: 'Roboto Condensed', sans-serif;
-	width: 8em;
-	height: 3em;
-	&.delete-button {
+	font-family: "Roboto Condensed", sans-serif;
+	width: 142px;
+	height: 35px;
+	margin-right: 6px;
+	&.delete-button,
+	&.add-favorite-button {
 		font-weight: 900;
 		font-size: 12px;
-		width: 1.8em;
-		height: 1.8em;
+		width: 35px;
+		height: 35px;
 		color: #35434d;
-		background-color: #FB94FF;
-		border-radius: 50%;
+		background-color: #ffc600;
+		/* border-radius: 50%; */
 		&:not(:hover) {
 			opacity: 0;
 		}
 	}
-`
+	&:hover + .delete-button {
+		opacity: 1;
+	}
+	&.add-favorite-button {
+		background-color: #ffc600;
+	}
+`;
 
 const FavoriteHoles = ({ className = "", favHoles, onClick, onDelete }) => {
 	if (favHoles.length > 0) {
 		const favs = favHoles.map((e, k) => (
 			<div key={k}>
 				<Button value={e} onClick={onClick} label={e} />
-				<Button value={e} onClick={onDelete} className={`delete-button ${className}`} label="—" />
+				<Button
+					value={e}
+					onClick={onDelete}
+					className={`delete-button ${className}`}
+					label="—"
+				/>
 			</div>
 		));
 		return favs;
@@ -328,7 +367,7 @@ const FavoriteHoles = ({ className = "", favHoles, onClick, onDelete }) => {
 };
 
 const Favbutton = ({
-	className = "",
+	className = "add-favorite",
 	onClick,
 	value,
 	label = value,
@@ -336,19 +375,33 @@ const Favbutton = ({
 }) => {
 	if (value && !inlist) {
 		return (
-			<div className={className}>
-				<Button value={value} onClick={onClick} label={label} />
-			</div>
+			<Fav className={className}>
+				<Button
+					value={value}
+					onClick={onClick}
+					className={`add-favorite-button`}
+					label={label}
+				/>
+			</Fav>
 		);
 	} else {
 		return null;
 	}
 };
+const Fav = styled.div`
+	display: inline-block;
+	position: absolute;
+	vertical-align: middle;
+`;
 
 const Header = ({ className = "header", children }) => {
-	return <h1 className={className}>{children}</h1>;
+	return <Head className={className}>{children}</Head>;
 };
-
+const Head = styled.h1`
+	text-align: center;
+	margin-bottom: 8px;
+	font-weight: 900;
+`;
 const Displayplate = ({
 	shoulddisplay,
 	header = "",
@@ -357,14 +410,23 @@ const Displayplate = ({
 }) => {
 	if (shoulddisplay) {
 		return (
-			<div className={className}>
+			<Plate className={className}>
 				<Header>{header}</Header>
 				{children}
-			</div>
+			</Plate>
 		);
 	} else {
 		return null;
 	}
 };
+
+const Plate = styled.div`
+	background-color: #193549;
+	justify-self: stretch;
+	&.global-plate {
+		padding: 8px;
+	}
+
+`;
 
 export default App;
