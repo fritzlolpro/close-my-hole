@@ -268,9 +268,7 @@ class App extends Component {
 							`currentMass: ${(
 								this.state.currentMass / 1000
 							).toLocaleString()} tonn`,
-							`Perform ${countJumpsWithoutProp} no-prop jumps and ${
-								countJumpsWithProp
-							} prop jumps to close this hole`
+							`Perform ${countJumpsWithoutProp} no-prop jumps and ${countJumpsWithProp} prop jumps to close this hole`
 						]}
 					</Info>
 
@@ -295,11 +293,26 @@ class App extends Component {
 					</Displayplate>
 					<Info>{history}</Info>
 				</Displayplate>
+				<Displayplate shoulddisplay="true" className="footer">
+
+						<span><Link linkAdress='https://fedorsorokin.ru/'>Fedor 2k17</Link></span>
+						<span><Link linkAdress='https://github.com/fritzlolpro/close-my-hole'>Git Hub</Link></span>
+						<span>pm Alexandra Stakhanova in game for any questions</span>
+
+
+				</Displayplate>
 			</div>
 		);
 	}
 }
-
+const Link = ({linkAdress='#', children}) => {
+	return (
+		<Aa href={linkAdress}>{children}</Aa>
+	)
+}
+const Aa = styled.a `
+	color: #2AFFDF;
+`
 const Info = ({ className = "stat-list", children }) => {
 	return children.map((e, k) => <div key={k}>{e}</div>);
 };
@@ -426,7 +439,15 @@ const Plate = styled.div`
 	&.global-plate {
 		padding: 8px;
 	}
+	&.footer {
+		grid-column: span 3;
+		padding: 30px;
+		text-align: center;
+		> span {
+			margin-left: 50px;
+		}
 
+	}
 `;
 
 export default App;
